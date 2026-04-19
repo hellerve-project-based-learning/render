@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Carp
+        uses: carpentry-org/setup-carp@v1
+
+      - name: Build raytracer library
+        run: carp -b raytracer/render.carp
+
+      - name: Build raytracer example
+        run: carp -b raytracer/ex.carp

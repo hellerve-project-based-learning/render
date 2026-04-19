@@ -1,6 +1,6 @@
 (load "Vector.carp")
 
-(load "https://github.com/carpentry-org/file@0.0.5")
+(load "https://github.com/carpentry-org/file@master")
 
 (defmodule Double
   (register MAX Double "DBL_MAX")
